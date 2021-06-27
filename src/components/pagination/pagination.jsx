@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
+import propTypes from 'prop-types';
 import clsx from "clsx";
 import "./pagination.scss";
 
 const limit = 5;
 const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
-    console.log({totalPages, currentPage})
+
   const [displayList, setDisplayList] = useState([]);
+
   useEffect(() => {
     const pageList = [];
     if (totalPages <= limit) {
@@ -42,7 +44,7 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
           <div
             className="pagination--page pagination--page__border"
             onClick={onClickHandler}
-            id={1}
+            id={'1'}
           >
             1
           </div>
@@ -76,5 +78,19 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
     </div>
   );
 };
+
+Pagination.defaultProps = {
+  totalPages: 20,
+  currentPage: 1,
+  setCurrentPage: (page) => {
+    console.log(page)
+  }
+}
+
+Pagination.propTypes = {
+  totalPages: propTypes.number,
+  currentPage: propTypes.number,
+  setCurrentPage: propTypes.func
+}
 
 export default Pagination;

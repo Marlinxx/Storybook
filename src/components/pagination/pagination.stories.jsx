@@ -1,19 +1,13 @@
 import React from 'react';
-import { useState } from 'react';
 
-import Pagination from './pagination';
+import Pagination from './pagination.jsx';
 
 export default {
   title: 'Pagination',
   component: Pagination
 };
 
-const Template = (args) => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = 20;
-    return <Pagination {...args} currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages}/>
-}
-;
+const Template = (args) => <Pagination {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {}
